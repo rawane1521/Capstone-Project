@@ -61,7 +61,6 @@ dill==0.3.4
 distributed==2022.7.0
 docopt==0.6.2
 docutils==0.18.1
-en-core-web-lg==3.5.0
 entrypoints==0.4
 et-xmlfile==1.1.0
 exceptiongroup==1.1.0

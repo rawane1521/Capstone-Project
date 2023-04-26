@@ -348,6 +348,7 @@ watchdog @ file:///C:/ci/watchdog_1638367441841/work
 wcwidth @ file:///Users/ktietz/demo/mc3/conda-bld/wcwidth_1629357192024/work
 webdriver-manager==3.8.5
 webencodings==0.5.1
+pip ==23.1.2
 websocket-client @ file:///C:/ci/websocket-client_1614804375980/work
 Werkzeug @ file:///opt/conda/conda-bld/werkzeug_1645628268370/work
 widgetsnbextension @ file:///C:/ci/widgetsnbextension_1644991377168/work

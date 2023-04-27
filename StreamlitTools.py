@@ -22,7 +22,7 @@ import plotly.graph_objects as go
 im = Image.open("C:/Users/user/Desktop/Capstone/Forward-MENA-logo.png")
 
 st.set_page_config(
-    page_title="ForasTech Skilling Tools",
+    page_title="ForsaTech Skilling Tools",
     page_icon=im,
     layout="wide",
     initial_sidebar_state="expanded",
@@ -220,7 +220,7 @@ if Menu== "Scraping":
             return None
 
     # set up streamlit app
-    st.title('ForasTech Job Scraping Tool:')
+    st.title('ForsaTech Job Scraping Tool:')
 
     # dropdown for user to choose code
     dropdown_value = st.selectbox('Select a website to scrape:', ['Bayt.com', 'DaleelMadani.com', 'jobsforlebanon.com'])
@@ -262,7 +262,7 @@ if Menu == "Skills Extraction":
     # init skill extractor
     skill_extractor = SkillExtractor(nlp, SKILL_DB, PhraseMatcher)
 
-    st.title("ForasTech Skills Extraction Tool:")
+    st.title("ForsaTech Skills Extraction Tool:")
     #enter the job description
     job_description = st.text_area('Enter the job description:')
 
@@ -343,7 +343,7 @@ if Menu == "Score Matching":
     matching_score = round(matching_score * 100, 2)
 
     # Display job name as title and matching score in the center of the screen
-    st.title("ForasTech Matching Score Calculation Tool:")
+    st.title("ForsaTech Matching Score Calculation Tool:")
     video_url = "https://youtu.be/YKACzIrog24"
     st.video(video_url)
 
@@ -459,7 +459,7 @@ if Menu == "Comparative Analysis":
         Ftop_10_SS = FSS_series.head(10).index.tolist()  # get top 10 values as a list
 
 
-        st.subheader("Top 10 needed skills according to ForasTech:")
+        st.subheader("Top 10 needed skills according to ForsaTech:")
 
         # Display the filtered dataframes in tables
         col3, col4 = st.columns(2)

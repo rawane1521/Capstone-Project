@@ -1,5 +1,6 @@
 #importing libraries
 import streamlit as st
+import spacy_streamlit
 import numpy as np
 import os
 import pandas as pd 

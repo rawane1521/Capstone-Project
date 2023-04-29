@@ -10,7 +10,9 @@ plotly==5.9.0
 scikit-image==0.19.2
 skillNer==1.0.3
 sortedcollections==2.1.0
-spacy>=3.0.0,<4.0.0
+spacy==3.5.1
+spacy-legacy==3.0.12
+spacy-loggers==1.0.4
 streamlit==1.21.0
 streamlit-option-menu==0.3.2
 streamlit-player==0.1.5

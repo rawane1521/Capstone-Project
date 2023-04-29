@@ -1,5 +1,4 @@
 anyio==3.5.0
-'en_core_web_lg'==3.5.0
 imageio==2.19.3
 imagesize==1.4.1
 jinja2-time==0.2.0

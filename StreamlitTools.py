@@ -310,8 +310,9 @@ if Menu == "Skills Extraction":
         unique_skills_df = pd.DataFrame(unique_skills, columns=['skill'])
         skillsType = pd.merge(unique_skills_df, allSkillsdf, on='skill', how='left')
         skillsType = skillsType.applymap(lambda x: x.title())
-
-        st.table(skillsType[["Skill", "Type"]])
+        skillsType = skillsType.rename(columns={"OrgSkill": "Skill Name", "type": "Skill Type"})
+        
+        st.table(skillsType[["Skill Name", "Skill Type"]])
 
         # Create a WordCloud object
         wordcloud = WordCloud(width=800, height=800, background_color='white', colormap='inferno', max_words=50).generate_from_text(' '.join(unique_skills))

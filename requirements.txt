@@ -1,4 +1,8 @@
 anyio==3.5.0
+cymem==2.0.7
+preshed==3.0.8
+thinc==8.1.9
+wasabi==1.1.1
 en-core-web-lg==3.5.0
 imageio==2.19.3
 imagesize==1.4.1

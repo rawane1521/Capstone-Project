@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 
-im = Image.open("C:/Users/user/Desktop/Capstone/Forward-MENA-logo.png")
+im = Image.open("Forward-MENA-logo.png")
 
 st.set_page_config(
     page_title="ForsaTech Skilling Tools",
@@ -40,7 +40,7 @@ Menu = option_menu(None, ["Home", "Scraping","Skills Extraction","Score Matching
 
 
 #Setting Conditions 
-video_file = open('C:/Users/user/Desktop/Capstone/FMQ_Digital-World_Music-only-2.mp4', 'rb')
+video_file = open('FMQ_Digital-World_Music-only-2.mp4', 'rb')
 video_bytes = video_file.read()
 if Menu == "Home": st.video(video_bytes)
 if Menu == "Home": st.title("FIND OUT ABOUT THE TOP SKILLS NEEDED IN THE MARKET TODAY!")
@@ -285,7 +285,7 @@ if Menu == "Skills Extraction":
 
 if Menu == "Score Matching": 
     # Load data from CSV file
-    df = pd.read_excel('C:/Users/user/Desktop/Capstone/Final Outcomes/Codes/FinalSkills - used.xlsx')
+    df = pd.read_excel('FinalSkills - used.xlsx')
 
     # Create list of unique job names
     job_names = df["Original JT"].unique().tolist()
@@ -361,9 +361,9 @@ if Menu == "Comparative Analysis":
     st.subheader("ForsaTech vs UN Escwa Skills")
 
     # Load the Excel sheets into dataframes
-    df1 = pd.read_excel("C:/Users/user/Desktop/Capstone/Final Outcomes/Files/UN vs Forsatech HS.xlsx")
-    df2 = pd.read_excel("C:/Users/user/Desktop/Capstone/Final Outcomes/Files/UN vs Forsatech SS.xlsx")
-    df3 = pd.read_excel("C:/Users/user/Desktop/Capstone/Final Outcomes/Files/Matching % UN vs ForsaTech - st.xlsx")
+    df1 = pd.read_excel("UN vs Forsatech HS.xlsx")
+    df2 = pd.read_excel("UN vs Forsatech SS.xlsx")
+    df3 = pd.read_excel("Matching % UN vs ForsaTech - st.xlsx")
 
     # Define a dropdown menu to select the column name
     options = ["All"] + sorted(list(df1.columns))
@@ -449,8 +449,8 @@ if Menu == "Comparative Analysis":
             st.table(pd.DataFrame(top_10_SS, columns=['Soft Skills']))
 
 
-        df4 = pd.read_excel("C:/Users/user/Desktop/Capstone/Forsatech SoftSkills.xlsx")
-        df5 = pd.read_excel("C:/Users/user/Desktop/Capstone/Forsatech HardSkills.xlsx")
+        df4 = pd.read_excel("Forsatech SoftSkills.xlsx")
+        df5 = pd.read_excel("Forsatech HardSkills.xlsx")
 
         FHS_series = df5.stack().value_counts()  # flatten DataFrame to Series and get value counts
         Ftop_10_HS = FHS_series.head(10).index.tolist()  # get top 10 values as a list

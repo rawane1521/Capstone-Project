@@ -252,34 +252,80 @@ if Menu== "Scraping":
 
 if Menu == "Skills Extraction": 
 
-    # load default skills data base
-    from skillNer.general_params import SKILL_DB
-    # import skill extractor
-    from skillNer.skill_extractor_class import SkillExtractor
-    # init params of skill extractor
-    nlp = spacy.load("./en_core_web_lg/en_core_web_lg-3.5.0")
-    # init skill extractor
-    skill_extractor = SkillExtractor(nlp, SKILL_DB, PhraseMatcher)
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+from collections import Counter
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
-    st.title("ForsaTech Skills Extraction Tool:")
-    #enter the job description
-    job_description = st.text_area('Enter the job description:')
 
-    if st.button('Run'):
-        annotations = skill_extractor.annotate(job_description)
-        doc_node_values = [match['doc_node_value'] for match in annotations['results']['ngram_scored']]
-        unique_skills = list(set(doc_node_values))
-        st.write(f"Skills Extracted: {unique_skills}")
-        
-        # Create a WordCloud object
-        wordcloud = WordCloud(width=800, height=800, background_color='white', colormap='inferno', max_words=50).generate_from_text(' '.join(unique_skills))
+# Define a list of relevant skills
+allSkillsdf = pd.read_excel("C:/Users/user/Desktop/Capstone/Codes/allSkillsdf - ST.xlsx")
+allSkillsList = allSkillsdf["OrgSkill"]
+#lemmatize and lower case the skills list
+lemmatizer = WordNetLemmatizer()
+allSkillsList = [lemmatizer.lemmatize(skill.lower()) for skill in allSkillsList]
 
-        # Plot the WordCloud image
-        st.set_option('deprecation.showPyplotGlobalUse', False)
-        plt.figure(figsize=(8,8))
-        plt.imshow(wordcloud, interpolation='bilinear')
-        plt.axis("off")
-        st.pyplot()    
+
+#creating a function to extract skills and their counts from job descriptions
+def get_skills(text, skills_list):
+    all_skills_names, all_skills_counts = [] , []
+    # Tokenize the job description text and remove stop words
+    tokens = [word.lower() for word in word_tokenize(text) if word.lower() not in stopwords.words("english")]
+
+    # Lemmatize the tokens
+    lemmatized_tokens = [lemmatizer.lemmatize(token) for token in tokens]
+
+    # Count the occurrences of each skill in the lemmatized tokens
+    skills_counts = Counter()
+    for i in range(len(lemmatized_tokens)):
+        if lemmatized_tokens[i] in skills_list:
+            # Handle single-word skills
+            skills_counts[lemmatized_tokens[i]] += 1
+        else:
+            # Handle multi-word skills
+            skill_concat = lemmatized_tokens[i]
+            if i < len(lemmatized_tokens) - 1:
+                skill_concat += " " + lemmatized_tokens[i+1]
+                if skill_concat in skills_list:
+                    skills_counts[skill_concat] += 1
+
+    # Print the extracted skills and their frequencies
+    for skill, count in skills_counts.items():
+        all_skills_names.append(skill)
+        all_skills_counts.append(count)
+
+    return all_skills_names
+
+#tiltle of tool
+st.title("Skills Extraction Tool:")
+#enter the job description
+job_description = st.text_area('Enter the job description:')
+
+if st.button('Run'):
+    skillsExt = get_skills(job_description, allSkillsList)
+    unique_skills = list(set(skillsExt))
+    allSkillsdf = allSkillsdf.apply(lambda x: x.str.lower())
+    allSkillsdf["skill"] = [lemmatizer.lemmatize(skill.lower()) for skill in allSkillsdf["OrgSkill"]]
+    unique_skills_df = pd.DataFrame(unique_skills, columns=['skill'])
+    skillsType = pd.merge(unique_skills_df, allSkillsdf, on='skill', how='left')
+    skillsType = skillsType.applymap(lambda x: x.title())
+    
+    st.table(skillsType[["OrgSkill", "type"]])
+    
+    # Create a WordCloud object
+    wordcloud = WordCloud(width=800, height=800, background_color='white', colormap='inferno', max_words=50).generate_from_text(' '.join(unique_skills))
+
+    # Plot the WordCloud image
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    plt.figure(figsize=(8,8))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off")
+    st.pyplot()
+
 
 
 if Menu == "Score Matching": 

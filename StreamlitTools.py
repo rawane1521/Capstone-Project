@@ -39,7 +39,7 @@ video_file = open('FMQ_Digital-World_Music-only-2.mp4', 'rb')
 video_bytes = video_file.read()
 if Menu == "Home": st.video(video_bytes)
 if Menu == "Home": st.title("FIND OUT ABOUT THE TOP SKILLS NEEDED IN THE MARKET TODAY!")
-if Menu == "Home":st.write("77% believe there is a gap between the job requirementsand the university graduate qualifications. As the world moves at a rapid pace towards digitalization, the gap  is exponentially growing. Accordingly, we have taken on the role of filling this gap.")
+if Menu == "Home":st.write("77% believe there is a gap between the job requirementsand the university graduate qualifications. As the world moves at a rapid pace towards digitalization, the gap  is exponentially growing. Accordingly, we have assumed the responsibility of addressing this gap.")
 if Menu == "Home":st.write("We will help you learn about the most in-demand careers, assess your skills, get certified and find the right job. To do so, please surf our offered tools to go through a career aspiration path.")
 
 if Menu== "Scraping": 

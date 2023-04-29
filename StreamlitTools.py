@@ -263,7 +263,7 @@ nltk.download('omw-1.4')
 
 
 # Define a list of relevant skills
-allSkillsdf = pd.read_excel("C:/Users/user/Desktop/Capstone/Codes/allSkillsdf - ST.xlsx")
+allSkillsdf = pd.read_excel("allSkillsdf - ST.xlsx")
 allSkillsList = allSkillsdf["OrgSkill"]
 #lemmatize and lower case the skills list
 lemmatizer = WordNetLemmatizer()

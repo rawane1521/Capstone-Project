@@ -249,6 +249,7 @@ if Menu== "Scraping":
 if Menu == "Skills Extraction": 
 
     import nltk
+    nltk.download('punkt')
     from nltk.tokenize import word_tokenize
     from nltk.corpus import stopwords
     from nltk.stem import WordNetLemmatizer

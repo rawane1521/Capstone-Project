@@ -12,7 +12,6 @@ import skillNer
 import plotly
 import plotly.graph_objs as go
 from streamlit_option_menu import option_menu
-import matplotlib.pyplot as plt
 from collections import Counter
 from plotly import tools
 import matplotlib.pyplot as plt

@@ -258,7 +258,7 @@ if Menu == "Skills Extraction":
     # import skill extractor
     from skillNer.skill_extractor_class import SkillExtractor
     # init params of skill extractor
-    nlp = spacy.load("en_core_web_lg")
+    nlp = spacy.load("./en_core_web_lg/en_core_web_lg-3.5.0")
     # init skill extractor
     skill_extractor = SkillExtractor(nlp, SKILL_DB, PhraseMatcher)
 

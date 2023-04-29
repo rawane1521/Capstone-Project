@@ -5,10 +5,6 @@ import os
 import pandas as pd 
 from PIL import Image
 from wordcloud import WordCloud
-import matplotlib.pyplot as plt
-import spacy
-from spacy.matcher import PhraseMatcher
-import skillNer
 import plotly
 import plotly.graph_objs as go
 from streamlit_option_menu import option_menu

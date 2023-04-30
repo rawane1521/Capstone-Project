@@ -371,17 +371,17 @@ if Menu == "Score Matching":
     for skill in select_ss_skills:
         proficiency = ss_proficiency[skill]
         if skill in ss_skills[:5]:
-            matching_score += 0.065 * proficiency_mapping[proficiency]
+            matching_score += 0.06 * proficiency_mapping[proficiency]
         else:
-            matching_score += (35 / (total_skills - 10) / 100) * proficiency_mapping[proficiency]
+            matching_score += (40 / (total_skills - 10) / 100) * proficiency_mapping[proficiency]
 
     # Calculate score for selected HS skills
     for skill in select_hs_skills:
         proficiency = hs_proficiency[skill]
         if skill in hs_skills[:5]:
-            matching_score += 0.065 * proficiency_mapping[proficiency]
+            matching_score += 0.06 * proficiency_mapping[proficiency]
         else:
-            matching_score += (35 / (total_skills - 10) / 100) * proficiency_mapping[proficiency]
+            matching_score += (40 / (total_skills - 10) / 100) * proficiency_mapping[proficiency]
 
     # Round matching score to 2 decimal places
     matching_score = round(matching_score * 100, 2)
@@ -393,7 +393,7 @@ if Menu == "Score Matching":
 
     st.header(f"Matching score for {selected_job} is: {matching_score}%")
 
-    if matching_score <= 65:
+    if matching_score <= 60:
         st.write("To enhance your skills in this field, you can start a learning path course or training on our website and get certified!")
     else:
         st.write("Continue learning more skills to gain competitive edge! The sky is the limit.")
